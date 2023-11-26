@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AlertPresenter {
+final class AlertPresenter {
     
     weak var delegate: UIViewController?
     
@@ -27,5 +27,4 @@ class AlertPresenter {
         // показываем всплывающее окно
         delegate?.present(alert, animated: true, completion: nil)
     }
-    
 }
