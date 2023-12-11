@@ -8,23 +8,28 @@
 import UIKit
 
 final class AlertPresenter {
+    private weak var delegate: UIViewController?
     
-    weak var delegate: UIViewController?
+    // MARK: - Lifecycle
+    
+    init(delegate: UIViewController) {
+        self.delegate = delegate
+    }
+    
+    // MARK: - Private functions
     
     func show(_ alertModel: AlertModel) {
-        // создаём объекты всплывающего окна
         let alert = UIAlertController(title: alertModel.title,
                                       message: alertModel.message,
                                       preferredStyle: .alert)
-        // константа с кнопкой для системного алерта
+        alert.view.accessibilityIdentifier = "Results"
+        
         let action = UIAlertAction(title: alertModel.buttonText, style: .default) { _ in
             alertModel.completion()
         }
 
-        // добавляем в алерт кнопку
         alert.addAction(action)
 
-        // показываем всплывающее окно
         delegate?.present(alert, animated: true, completion: nil)
     }
 }
