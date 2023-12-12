@@ -7,14 +7,12 @@ final class MovieQuizViewController: UIViewController, MovieQuizViewControllerPr
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     
     private var presenter: MovieQuizPresenter!
-    private var alertPresenter: AlertPresenter!
     
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter = MovieQuizPresenter(viewController: self)
-        alertPresenter = AlertPresenter(delegate: self)
     }
     
     // MARK: - Actions
@@ -36,7 +34,7 @@ final class MovieQuizViewController: UIViewController, MovieQuizViewControllerPr
     }
     
     func show(alert: AlertModel) {
-        alertPresenter.show(alert)
+        AlertPresenter.show(alertModel: alert, delegate: self)
     }
     
     func showLoadingIndicator() {

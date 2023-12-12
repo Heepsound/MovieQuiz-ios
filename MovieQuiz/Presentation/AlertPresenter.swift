@@ -8,17 +8,8 @@
 import UIKit
 
 final class AlertPresenter {
-    private weak var delegate: UIViewController?
     
-    // MARK: - Lifecycle
-    
-    init(delegate: UIViewController) {
-        self.delegate = delegate
-    }
-    
-    // MARK: - Private functions
-    
-    func show(_ alertModel: AlertModel) {
+    static func show(alertModel: AlertModel, delegate: UIViewController?) {
         let alert = UIAlertController(title: alertModel.title,
                                       message: alertModel.message,
                                       preferredStyle: .alert)

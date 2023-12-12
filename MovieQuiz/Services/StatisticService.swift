@@ -76,7 +76,7 @@ final class StatisticServiceImplementation: StatisticService {
         correct += count
         total += amount
         let currentGameRecord = GameRecord(correct: count, total: amount, date: Date())
-        if currentGameRecord.isBetterThan(bestGame) {
+        if currentGameRecord > bestGame {
             bestGame = currentGameRecord
         }
     }

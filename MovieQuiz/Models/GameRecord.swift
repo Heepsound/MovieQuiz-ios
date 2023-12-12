@@ -7,13 +7,19 @@
 
 import Foundation
 
-struct GameRecord: Codable {
+struct GameRecord: Codable, Comparable {
     let correct: Int
     let total: Int
     let date: Date
     
-    func isBetterThan(_ another: GameRecord) -> Bool {
-        correct > another.correct
+    // MARK: - ComparableProtocol
+    
+    static func < (lhs: GameRecord, rhs: GameRecord) -> Bool {
+        return lhs.correct < rhs.correct
+    }
+    
+    static func > (lhs: GameRecord, rhs: GameRecord) -> Bool {
+        return lhs.correct > rhs.correct
     }
 }
 
